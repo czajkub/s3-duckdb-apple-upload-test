@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HealthData [
+<!-- HealthKit Export Version: 13 --><!ELEMENT HealthData (ExportDate , Me , (Record | Correlation | Workout | ActivitySummary | ClinicalRecord | Audiogram | VisionPrescription)*)>
+<!ATTLIST HealthData locale CDATA #REQUIRED>
+<!ELEMENT ExportDate EMPTY>
+<!ATTLIST ExportDate value CDATA #REQUIRED>
+<!ELEMENT Me EMPTY>
+<!ATTLIST Me HKCharacteristicTypeIdentifierDateOfBirth CDATA #REQUIRED>
+<!ATTLIST Me HKCharacteristicTypeIdentifierBiologicalSex CDATA #REQUIRED>
+<!ATTLIST Me HKCharacteristicTypeIdentifierBloodType CDATA #REQUIRED>
+<!ATTLIST Me HKCharacteristicTypeIdentifierFitzpatrickSkinType CDATA #REQUIRED>
+<!ATTLIST Me HKCharacteristicTypeIdentifierCardioFitnessMedicationsUse CDATA #REQUIRED>
+<!ELEMENT Record (MetadataEntry | HeartRateVariabilityMetadataList)*>
+<!ATTLIST Record type CDATA #REQUIRED>
+<!ATTLIST Record unit CDATA #IMPLIED>
+<!ATTLIST Record value CDATA #IMPLIED>
+<!ATTLIST Record sourceName CDATA #REQUIRED>
+<!ATTLIST Record sourceVersion CDATA #IMPLIED>
+<!ATTLIST Record device CDATA #IMPLIED>
+<!ATTLIST Record creationDate CDATA #IMPLIED>
+<!ATTLIST Record startDate CDATA #REQUIRED>
+<!ATTLIST Record endDate CDATA #REQUIRED>
+<!-- Note: Any Records that appear as children of a correlation also appear as top-level records in this document. --><!ELEMENT Correlation (MetadataEntry | Record)*>
+<!ATTLIST Correlation type CDATA #REQUIRED>
+<!ATTLIST Correlation sourceName CDATA #REQUIRED>
+<!ATTLIST Correlation sourceVersion CDATA #IMPLIED>
+<!ATTLIST Correlation device CDATA #IMPLIED>
+<!ATTLIST Correlation creationDate CDATA #IMPLIED>
+<!ATTLIST Correlation startDate CDATA #REQUIRED>
+<!ATTLIST Correlation endDate CDATA #REQUIRED>
+<!ELEMENT Workout (MetadataEntry | WorkoutEvent | WorkoutRoute | WorkoutStatistics)*>
+<!ATTLIST Workout workoutActivityType CDATA #REQUIRED>
+<!ATTLIST Workout duration CDATA #IMPLIED>
+<!ATTLIST Workout durationUnit CDATA #IMPLIED>
+<!ATTLIST Workout totalDistance CDATA #IMPLIED>
+<!ATTLIST Workout totalDistanceUnit CDATA #IMPLIED>
+<!ATTLIST Workout totalEnergyBurned CDATA #IMPLIED>
+<!ATTLIST Workout totalEnergyBurnedUnit CDATA #IMPLIED>
+<!ATTLIST Workout sourceName CDATA #REQUIRED>
+<!ATTLIST Workout sourceVersion CDATA #IMPLIED>
+<!ATTLIST Workout device CDATA #IMPLIED>
+<!ATTLIST Workout creationDate CDATA #IMPLIED>
+<!ATTLIST Workout startDate CDATA #REQUIRED>
+<!ATTLIST Workout endDate CDATA #REQUIRED>
+<!ELEMENT WorkoutActivity (MetadataEntry)*>
+<!ATTLIST WorkoutActivity uuid CDATA #REQUIRED>
+<!ATTLIST WorkoutActivity startDate CDATA #REQUIRED>
+<!ATTLIST WorkoutActivity endDate CDATA #IMPLIED>
+<!ATTLIST WorkoutActivity duration CDATA #IMPLIED>
+<!ATTLIST WorkoutActivity durationUnit CDATA #IMPLIED>
+<!ELEMENT WorkoutEvent (MetadataEntry)*>
+<!ATTLIST WorkoutEvent type CDATA #REQUIRED>
+<!ATTLIST WorkoutEvent date CDATA #REQUIRED>
+<!ATTLIST WorkoutEvent duration CDATA #IMPLIED>
+<!ATTLIST WorkoutEvent durationUnit CDATA #IMPLIED>
+<!ELEMENT WorkoutStatistics EMPTY>
+<!ATTLIST WorkoutStatistics type CDATA #REQUIRED>
+<!ATTLIST WorkoutStatistics startDate CDATA #REQUIRED>
+<!ATTLIST WorkoutStatistics endDate CDATA #REQUIRED>
+<!ATTLIST WorkoutStatistics average CDATA #IMPLIED>
+<!ATTLIST WorkoutStatistics minimum CDATA #IMPLIED>
+<!ATTLIST WorkoutStatistics maximum CDATA #IMPLIED>
+<!ATTLIST WorkoutStatistics sum CDATA #IMPLIED>
+<!ATTLIST WorkoutStatistics unit CDATA #IMPLIED>
+<!ELEMENT WorkoutRoute (MetadataEntry | FileReference)*>
+<!ATTLIST WorkoutRoute sourceName CDATA #REQUIRED>
+<!ATTLIST WorkoutRoute sourceVersion CDATA #IMPLIED>
+<!ATTLIST WorkoutRoute device CDATA #IMPLIED>
+<!ATTLIST WorkoutRoute creationDate CDATA #IMPLIED>
+<!ATTLIST WorkoutRoute startDate CDATA #REQUIRED>
+<!ATTLIST WorkoutRoute endDate CDATA #REQUIRED>
+<!ELEMENT FileReference EMPTY>
+<!ATTLIST FileReference path CDATA #REQUIRED>
+<!ELEMENT ActivitySummary EMPTY>
+<!ATTLIST ActivitySummary dateComponents CDATA #IMPLIED>
+<!ATTLIST ActivitySummary activeEnergyBurned CDATA #IMPLIED>
+<!ATTLIST ActivitySummary activeEnergyBurnedGoal CDATA #IMPLIED>
+<!ATTLIST ActivitySummary activeEnergyBurnedUnit CDATA #IMPLIED>
+<!ATTLIST ActivitySummary appleMoveTime CDATA #IMPLIED>
+<!ATTLIST ActivitySummary appleMoveTimeGoal CDATA #IMPLIED>
+<!ATTLIST ActivitySummary appleExerciseTime CDATA #IMPLIED>
+<!ATTLIST ActivitySummary appleExerciseTimeGoal CDATA #IMPLIED>
+<!ATTLIST ActivitySummary appleStandHours CDATA #IMPLIED>
+<!ATTLIST ActivitySummary appleStandHoursGoal CDATA #IMPLIED>
+<!ELEMENT MetadataEntry EMPTY>
+<!ATTLIST MetadataEntry key CDATA #REQUIRED>
+<!ATTLIST MetadataEntry value CDATA #REQUIRED>
+<!-- Note: Heart Rate Variability records captured by Apple Watch may include an associated list of instantaneous beats-per-minute readings. --><!ELEMENT HeartRateVariabilityMetadataList (InstantaneousBeatsPerMinute)*>
+<!ELEMENT InstantaneousBeatsPerMinute EMPTY>
+<!ATTLIST InstantaneousBeatsPerMinute bpm CDATA #REQUIRED>
+<!ATTLIST InstantaneousBeatsPerMinute time CDATA #REQUIRED>
+<!ELEMENT ClinicalRecord EMPTY>
+<!ATTLIST ClinicalRecord type CDATA #REQUIRED>
+<!ATTLIST ClinicalRecord identifier CDATA #REQUIRED>
+<!ATTLIST ClinicalRecord sourceName CDATA #REQUIRED>
+<!ATTLIST ClinicalRecord sourceURL CDATA #REQUIRED>
+<!ATTLIST ClinicalRecord fhirVersion CDATA #REQUIRED>
+<!ATTLIST ClinicalRecord receivedDate CDATA #REQUIRED>
+<!ATTLIST ClinicalRecord resourceFilePath CDATA #REQUIRED>
+<!ELEMENT Audiogram (MetadataEntry | SensitivityPoint)*>
+<!ATTLIST Audiogram type CDATA #REQUIRED>
+<!ATTLIST Audiogram sourceName CDATA #REQUIRED>
+<!ATTLIST Audiogram sourceVersion CDATA #IMPLIED>
+<!ATTLIST Audiogram device CDATA #IMPLIED>
+<!ATTLIST Audiogram creationDate CDATA #IMPLIED>
+<!ATTLIST Audiogram startDate CDATA #REQUIRED>
+<!ATTLIST Audiogram endDate CDATA #REQUIRED>
+<!ELEMENT SensitivityPoint EMPTY>
+<!ATTLIST SensitivityPoint frequencyValue CDATA #REQUIRED>
+<!ATTLIST SensitivityPoint frequencyUnit CDATA #REQUIRED>
+<!ATTLIST SensitivityPoint leftEarValue CDATA #IMPLIED>
+<!ATTLIST SensitivityPoint leftEarUnit CDATA #IMPLIED>
+<!ATTLIST SensitivityPoint rightEarValue CDATA #IMPLIED>
+<!ATTLIST SensitivityPoint rightEarUnit CDATA #IMPLIED>
+<!ELEMENT VisionPrescription (RightEye | LeftEye | Attachment | MetadataEntry)*>
+<!ATTLIST VisionPrescription type CDATA #REQUIRED>
+<!ATTLIST VisionPrescription dateIssued CDATA #REQUIRED>
+<!ATTLIST VisionPrescription expirationDate CDATA #IMPLIED>
+<!ATTLIST VisionPrescription brand CDATA #IMPLIED>
+<!ELEMENT RightEye EMPTY>
+<!ATTLIST RightEye sphere CDATA #IMPLIED>
+<!ATTLIST RightEye sphereUnit CDATA #IMPLIED>
+<!ATTLIST RightEye cylinder CDATA #IMPLIED>
+<!ATTLIST RightEye cylinderUnit CDATA #IMPLIED>
+<!ATTLIST RightEye axis CDATA #IMPLIED>
+<!ATTLIST RightEye axisUnit CDATA #IMPLIED>
+<!ATTLIST RightEye add CDATA #IMPLIED>
+<!ATTLIST RightEye addUnit CDATA #IMPLIED>
+<!ATTLIST RightEye vertex CDATA #IMPLIED>
+<!ATTLIST RightEye vertexUnit CDATA #IMPLIED>
+<!ATTLIST RightEye prismAmount CDATA #IMPLIED>
+<!ATTLIST RightEye prismAmountUnit CDATA #IMPLIED>
+<!ATTLIST RightEye prismAngle CDATA #IMPLIED>
+<!ATTLIST RightEye prismAngleUnit CDATA #IMPLIED>
+<!ATTLIST RightEye farPD CDATA #IMPLIED>
+<!ATTLIST RightEye farPDUnit CDATA #IMPLIED>
+<!ATTLIST RightEye nearPD CDATA #IMPLIED>
+<!ATTLIST RightEye nearPDUnit CDATA #IMPLIED>
+<!ATTLIST RightEye baseCurve CDATA #IMPLIED>
+<!ATTLIST RightEye baseCurveUnit CDATA #IMPLIED>
+<!ATTLIST RightEye diameter CDATA #IMPLIED>
+<!ATTLIST RightEye diameterUnit CDATA #IMPLIED>
+<!ELEMENT LeftEye EMPTY>
+<!ATTLIST LeftEye sphere CDATA #IMPLIED>
+<!ATTLIST LeftEye sphereUnit CDATA #IMPLIED>
+<!ATTLIST LeftEye cylinder CDATA #IMPLIED>
+<!ATTLIST LeftEye cylinderUnit CDATA #IMPLIED>
+<!ATTLIST LeftEye axis CDATA #IMPLIED>
+<!ATTLIST LeftEye axisUnit CDATA #IMPLIED>
+<!ATTLIST LeftEye add CDATA #IMPLIED>
+<!ATTLIST LeftEye addUnit CDATA #IMPLIED>
+<!ATTLIST LeftEye vertex CDATA #IMPLIED>
+<!ATTLIST LeftEye vertexUnit CDATA #IMPLIED>
+<!ATTLIST LeftEye prismAmount CDATA #IMPLIED>
+<!ATTLIST LeftEye prismAmountUnit CDATA #IMPLIED>
+<!ATTLIST LeftEye prismAngle CDATA #IMPLIED>
+<!ATTLIST LeftEye prismAngleUnit CDATA #IMPLIED>
+<!ATTLIST LeftEye farPD CDATA #IMPLIED>
+<!ATTLIST LeftEye farPDUnit CDATA #IMPLIED>
+<!ATTLIST LeftEye nearPD CDATA #IMPLIED>
+<!ATTLIST LeftEye nearPDUnit CDATA #IMPLIED>
+<!ATTLIST LeftEye baseCurve CDATA #IMPLIED>
+<!ATTLIST LeftEye baseCurveUnit CDATA #IMPLIED>
+<!ATTLIST LeftEye diameter CDATA #IMPLIED>
+<!ATTLIST LeftEye diameterUnit CDATA #IMPLIED>
+<!ELEMENT Attachment EMPTY>
+<!ATTLIST Attachment identifier CDATA #IMPLIED>
+]>
+<HealthData locale="en_US">
+  <ExportDate value="2023-03-18 00:11:42 -0400"/>
+  <Me HKCharacteristicTypeIdentifierDateOfBirth="1983-05-29" HKCharacteristicTypeIdentifierBiologicalSex="HKBiologicalSexMale" HKCharacteristicTypeIdentifierBloodType="HKBloodTypeNotSet" HKCharacteristicTypeIdentifierFitzpatrickSkinType="HKFitzpatrickSkinTypeNotSet" HKCharacteristicTypeIdentifierCardioFitnessMedicationsUse="None"/>
+
+  <!-- Step Count Records -->
+  <Record type="HKQuantityTypeIdentifierStepCount" sourceName="Rob’s Apple Watch" sourceVersion="7.0.2" device="&lt;&lt;HKDevice: 0x280768050&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,1, software:7.0.2&gt;" unit="count" creationDate="2020-10-24 18:04:01 -0400" startDate="2020-10-24 17:56:38 -0400" endDate="2020-10-24 17:56:46 -0400" value="13"/>
+  <Record type="HKQuantityTypeIdentifierStepCount" sourceName="Rob’s Apple Watch" sourceVersion="7.0.2" device="&lt;&lt;HKDevice: 0x280768050&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,1, software:7.0.2&gt;" unit="count" creationDate="2020-10-24 18:05:03 -0400" startDate="2020-10-24 18:04:17 -0400" endDate="2020-10-24 18:05:00 -0400" value="54"/>
+  <Record type="HKQuantityTypeIdentifierStepCount" sourceName="Rob’s Apple Watch" sourceVersion="7.0.2" device="&lt;&lt;HKDevice: 0x280768050&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,1, software:7.0.2&gt;" unit="count" creationDate="2020-10-24 18:06:24 -0400" startDate="2020-10-24 18:05:03 -0400" endDate="2020-10-24 18:05:05 -0400" value="13"/>
+  <Record type="HKQuantityTypeIdentifierStepCount" sourceName="Rob’s Apple Watch" sourceVersion="7.0.2" device="&lt;&lt;HKDevice: 0x280768050&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,1, software:7.0.2&gt;" unit="count" creationDate="2020-10-24 18:06:24 -0400" startDate="2020-10-24 18:05:13 -0400" endDate="2020-10-24 18:06:14 -0400" value="76"/>
+  <Record type="HKQuantityTypeIdentifierStepCount" sourceName="Rob’s Apple Watch" sourceVersion="7.0.2" device="&lt;&lt;HKDevice: 0x280768050&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,1, software:7.0.2&gt;" unit="count" creationDate="2020-10-24 18:16:30 -0400" startDate="2020-10-24 18:06:14 -0400" endDate="2020-10-24 18:07:15 -0400" value="87"/>
+  <Record type="HKQuantityTypeIdentifierStepCount" sourceName="Rob's iPhone" sourceVersion="16.3" unit="count" creationDate="2023-01-15 14:23:12 -0500" startDate="2023-01-15 09:00:00 -0500" endDate="2023-01-15 09:15:00 -0500" value="234"/>
+  <Record type="HKQuantityTypeIdentifierStepCount" sourceName="Rob's iPhone" sourceVersion="16.3" unit="count" creationDate="2023-01-15 14:45:33 -0500" startDate="2023-01-15 09:15:00 -0500" endDate="2023-01-15 09:30:00 -0500" value="189"/>
+  <Record type="HKQuantityTypeIdentifierStepCount" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x280768050&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="count" creationDate="2023-01-16 10:22:45 -0500" startDate="2023-01-16 08:30:00 -0500" endDate="2023-01-16 08:45:00 -0500" value="312"/>
+  <Record type="HKQuantityTypeIdentifierStepCount" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x280768050&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="count" creationDate="2023-01-16 10:35:21 -0500" startDate="2023-01-16 08:45:00 -0500" endDate="2023-01-16 09:00:00 -0500" value="278"/>
+  <Record type="HKQuantityTypeIdentifierStepCount" sourceName="Polar Flow" sourceVersion="4.12" unit="count" creationDate="2023-01-17 19:45:33 -0500" startDate="2023-01-17 18:00:00 -0500" endDate="2023-01-17 18:30:00 -0500" value="456"/>
+
+  <!-- Heart Rate Records -->
+  <Record type="HKQuantityTypeIdentifierHeartRate" sourceName="Rob’s Apple Watch" sourceVersion="8.5.1" device="&lt;&lt;HKDevice: 0x28043ad50&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,1, software:8.5.1&gt;" unit="count/min" creationDate="2022-05-18 02:31:19 -0400" startDate="2022-05-18 02:25:42 -0400" endDate="2022-05-18 02:25:42 -0400" value="58"/>
+  <Record type="HKQuantityTypeIdentifierHeartRate" sourceName="Rob’s Apple Watch" sourceVersion="8.5.1" device="&lt;&lt;HKDevice: 0x28043ad50&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,1, software:8.5.1&gt;" unit="count/min" creationDate="2022-05-18 02:37:40 -0400" startDate="2022-05-18 02:33:34 -0400" endDate="2022-05-18 02:33:34 -0400" value="59"/>
+  <Record type="HKQuantityTypeIdentifierHeartRate" sourceName="Rob’s Apple Watch" sourceVersion="8.5.1" device="&lt;&lt;HKDevice: 0x28043ad50&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,1, software:8.5.1&gt;" unit="count/min" creationDate="2022-05-18 02:41:12 -0400" startDate="2022-05-18 02:40:05 -0400" endDate="2022-05-18 02:40:05 -0400" value="58.8516"/>
+  <Record type="HKQuantityTypeIdentifierHeartRate" sourceName="Rob’s Apple Watch" sourceVersion="8.5.1" device="&lt;&lt;HKDevice: 0x28043ad50&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,1, software:8.5.1&gt;" unit="count/min" creationDate="2022-05-18 02:46:28 -0400" startDate="2022-05-18 02:37:30 -0400" endDate="2022-05-18 02:37:30 -0400" value="58"/>
+  <Record type="HKQuantityTypeIdentifierHeartRate" sourceName="Rob’s Apple Watch" sourceVersion="8.5.1" device="&lt;&lt;HKDevice: 0x28043ad50&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,1, software:8.5.1&gt;" unit="count/min" creationDate="2022-05-18 02:46:28 -0400" startDate="2022-05-18 02:41:37 -0400" endDate="2022-05-18 02:41:37 -0400" value="59"/>
+  <Record type="HKQuantityTypeIdentifierHeartRate" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28043ad50&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="count/min" creationDate="2023-01-15 08:15:30 -0500" startDate="2023-01-15 08:10:15 -0500" endDate="2023-01-15 08:10:15 -0500" value="62"/>
+  <Record type="HKQuantityTypeIdentifierHeartRate" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28043ad50&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="count/min" creationDate="2023-01-15 08:20:45 -0500" startDate="2023-01-15 08:15:30 -0500" endDate="2023-01-15 08:15:30 -0500" value="61"/>
+  <Record type="HKQuantityTypeIdentifierHeartRate" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28043ad50&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="count/min" creationDate="2023-01-15 08:25:12 -0500" startDate="2023-01-15 08:20:45 -0500" endDate="2023-01-15 08:20:45 -0500" value="63"/>
+  <Record type="HKQuantityTypeIdentifierHeartRate" sourceName="Polar Flow" sourceVersion="4.12" unit="count/min" creationDate="2023-01-17 19:30:22 -0500" startDate="2023-01-17 18:15:00 -0500" endDate="2023-01-17 18:15:00 -0500" value="145"/>
+  <Record type="HKQuantityTypeIdentifierHeartRate" sourceName="Polar Flow" sourceVersion="4.12" unit="count/min" creationDate="2023-01-17 19:35:45 -0500" startDate="2023-01-17 18:20:00 -0500" endDate="2023-01-17 18:20:00 -0500" value="152"/>
+
+  <!-- Active Energy Burned Records -->
+  <Record type="HKQuantityTypeIdentifierActiveEnergyBurned" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="Cal" creationDate="2023-01-15 09:30:45 -0500" startDate="2023-01-15 09:00:00 -0500" endDate="2023-01-15 09:30:00 -0500" value="45.2"/>
+  <Record type="HKQuantityTypeIdentifierActiveEnergyBurned" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="Cal" creationDate="2023-01-15 10:00:22 -0500" startDate="2023-01-15 09:30:00 -0500" endDate="2023-01-15 10:00:00 -0500" value="38.7"/>
+  <Record type="HKQuantityTypeIdentifierActiveEnergyBurned" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="Cal" creationDate="2023-01-16 11:15:33 -0500" startDate="2023-01-16 10:45:00 -0500" endDate="2023-01-16 11:15:00 -0500" value="52.3"/>
+
+  <!-- Basal Energy Burned Records -->
+  <Record type="HKQuantityTypeIdentifierBasalEnergyBurned" sourceName="Rob’s Apple Watch" sourceVersion="9.1" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.1&gt;" unit="Cal" creationDate="2022-11-27 18:58:43 -0400" startDate="2022-11-27 18:58:35 -0400" endDate="2022-11-27 18:58:38 -0400" value="0.086"/>
+  <Record type="HKQuantityTypeIdentifierBasalEnergyBurned" sourceName="Rob’s Apple Watch" sourceVersion="9.1" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.1&gt;" unit="Cal" creationDate="2022-11-27 18:58:46 -0400" startDate="2022-11-27 18:58:38 -0400" endDate="2022-11-27 18:58:40 -0400" value="0.086"/>
+  <Record type="HKQuantityTypeIdentifierBasalEnergyBurned" sourceName="Rob’s Apple Watch" sourceVersion="9.1" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.1&gt;" unit="Cal" creationDate="2022-11-27 18:58:48 -0400" startDate="2022-11-27 18:58:40 -0400" endDate="2022-11-27 18:58:43 -0400" value="0.086"/>
+  <Record type="HKQuantityTypeIdentifierBasalEnergyBurned" sourceName="Rob’s Apple Watch" sourceVersion="9.1" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.1&gt;" unit="Cal" creationDate="2022-11-27 18:58:48 -0400" startDate="2022-11-27 18:58:43 -0400" endDate="2022-11-27 18:58:45 -0400" value="0.086"/>
+  <Record type="HKQuantityTypeIdentifierBasalEnergyBurned" sourceName="Rob’s Apple Watch" sourceVersion="9.1" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.1&gt;" unit="Cal" creationDate="2022-11-27 18:58:53 -0400" startDate="2022-11-27 18:58:45 -0400" endDate="2022-11-27 18:58:48 -0400" value="0.086"/>
+  <Record type="HKQuantityTypeIdentifierBasalEnergyBurned" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="Cal" creationDate="2023-01-15 09:00:15 -0500" startDate="2023-01-15 08:57:00 -0500" endDate="2023-01-15 09:00:00 -0500" value="2.1"/>
+  <Record type="HKQuantityTypeIdentifierBasalEnergyBurned" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="Cal" creationDate="2023-01-15 09:03:22 -0500" startDate="2023-01-15 09:00:00 -0500" endDate="2023-01-15 09:03:00 -0500" value="2.1"/>
+  <Record type="HKQuantityTypeIdentifierBasalEnergyBurned" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="Cal" creationDate="2023-01-15 09:06:45 -0500" startDate="2023-01-15 09:03:00 -0500" endDate="2023-01-15 09:06:00 -0500" value="2.1"/>
+
+  <!-- Distance Walking/Running Records -->
+  <Record type="HKQuantityTypeIdentifierDistanceWalkingRunning" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="mi" creationDate="2023-01-15 09:30:45 -0500" startDate="2023-01-15 09:00:00 -0500" endDate="2023-01-15 09:30:00 -0500" value="0.45"/>
+  <Record type="HKQuantityTypeIdentifierDistanceWalkingRunning" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="mi" creationDate="2023-01-15 10:00:22 -0500" startDate="2023-01-15 09:30:00 -0500" endDate="2023-01-15 10:00:00 -0500" value="0.38"/>
+  <Record type="HKQuantityTypeIdentifierDistanceWalkingRunning" sourceName="Polar Flow" sourceVersion="4.12" unit="mi" creationDate="2023-01-17 19:45:33 -0500" startDate="2023-01-17 18:00:00 -0500" endDate="2023-01-17 18:30:00 -0500" value="1.23"/>
+
+  <!-- Body Mass Records -->
+  <Record type="HKQuantityTypeIdentifierBodyMass" sourceName="Sync Solver" sourceVersion="30" unit="lb" creationDate="2023-01-10 07:30:00 -0500" startDate="2023-01-10 07:00:00 -0500" endDate="2023-01-10 07:30:00 -0500" value="175.3"/>
+  <Record type="HKQuantityTypeIdentifierBodyMass" sourceName="Sync Solver" sourceVersion="30" unit="lb" creationDate="2023-01-17 07:15:00 -0500" startDate="2023-01-17 07:00:00 -0500" endDate="2023-01-17 07:15:00 -0500" value="174.8"/>
+  <Record type="HKQuantityTypeIdentifierBodyMass" sourceName="Sync Solver" sourceVersion="30" unit="lb" creationDate="2023-01-24 07:20:00 -0500" startDate="2023-01-24 07:00:00 -0500" endDate="2023-01-24 07:20:00 -0500" value="175.1"/>
+
+  <!-- Body Mass Index Records -->
+  <Record type="HKQuantityTypeIdentifierBodyMassIndex" sourceName="Sync Solver" unit="count" creationDate="2023-01-10 07:30:00 -0500" startDate="2023-01-10 07:00:00 -0500" endDate="2023-01-10 07:30:00 -0500" value="23.8"/>
+  <Record type="HKQuantityTypeIdentifierBodyMassIndex" sourceName="Sync Solver" unit="count" creationDate="2023-01-17 07:15:00 -0500" startDate="2023-01-17 07:00:00 -0500" endDate="2023-01-17 07:15:00 -0500" value="23.75"/>
+  <Record type="HKQuantityTypeIdentifierBodyMassIndex" sourceName="Sync Solver" unit="count" creationDate="2023-01-24 07:20:00 -0500" startDate="2023-01-24 07:00:00 -0500" endDate="2023-01-24 07:20:00 -0500" value="23.79"/>
+
+  <!-- Height Records -->
+  <Record type="HKQuantityTypeIdentifierHeight" sourceName="Rob's iPhone" sourceVersion="16.3" unit="in" creationDate="2023-01-01 12:00:00 -0500" startDate="2023-01-01 00:00:00 -0500" endDate="2023-01-01 23:59:59 -0500" value="70"/>
+
+  <!-- Flights Climbed Records -->
+  <Record type="HKQuantityTypeIdentifierFlightsClimbed" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="count" creationDate="2023-01-15 12:30:45 -0500" startDate="2023-01-15 12:00:00 -0500" endDate="2023-01-15 12:30:00 -0500" value="3"/>
+  <Record type="HKQuantityTypeIdentifierFlightsClimbed" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="count" creationDate="2023-01-15 15:15:22 -0500" startDate="2023-01-15 14:45:00 -0500" endDate="2023-01-15 15:15:00 -0500" value="2"/>
+  <Record type="HKQuantityTypeIdentifierFlightsClimbed" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="count" creationDate="2023-01-16 09:45:33 -0500" startDate="2023-01-16 09:00:00 -0500" endDate="2023-01-16 09:45:00 -0500" value="4"/>
+
+  <!-- Apple Exercise Time Records -->
+  <Record type="HKQuantityTypeIdentifierAppleExerciseTime" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="min" creationDate="2023-01-15 10:30:45 -0500" startDate="2023-01-15 09:00:00 -0500" endDate="2023-01-15 10:30:00 -0500" value="30"/>
+  <Record type="HKQuantityTypeIdentifierAppleExerciseTime" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="min" creationDate="2023-01-16 11:45:22 -0500" startDate="2023-01-16 10:00:00 -0500" endDate="2023-01-16 11:45:00 -0500" value="45"/>
+
+  <!-- Apple Stand Time Records -->
+  <Record type="HKQuantityTypeIdentifierAppleStandTime" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="min" creationDate="2023-01-15 09:05:15 -0500" startDate="2023-01-15 09:00:00 -0500" endDate="2023-01-15 09:05:00 -0500" value="1"/>
+  <Record type="HKQuantityTypeIdentifierAppleStandTime" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="min" creationDate="2023-01-15 10:02:33 -0500" startDate="2023-01-15 10:00:00 -0500" endDate="2023-01-15 10:02:00 -0500" value="1"/>
+
+  <!-- VO2 Max Records -->
+  <Record type="HKQuantityTypeIdentifierVO2Max" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="mL/kg*min" creationDate="2023-01-17 19:50:00 -0500" startDate="2023-01-17 18:00:00 -0500" endDate="2023-01-17 19:00:00 -0500" value="42.5"/>
+  <Record type="HKQuantityTypeIdentifierVO2Max" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="mL/kg*min" creationDate="2023-01-20 18:30:00 -0500" startDate="2023-01-20 17:00:00 -0500" endDate="2023-01-20 18:00:00 -0500" value="43.1"/>
+
+  <!-- Resting Heart Rate Records -->
+  <Record type="HKQuantityTypeIdentifierRestingHeartRate" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28043ad50&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="count/min" creationDate="2023-01-15 23:59:00 -0500" startDate="2023-01-15 00:00:00 -0500" endDate="2023-01-15 23:59:00 -0500" value="58"/>
+  <Record type="HKQuantityTypeIdentifierRestingHeartRate" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28043ad50&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="count/min" creationDate="2023-01-16 23:59:00 -0500" startDate="2023-01-16 00:00:00 -0500" endDate="2023-01-16 23:59:00 -0500" value="57"/>
+
+  <!-- Heart Rate Variability Records -->
+  <Record type="HKQuantityTypeIdentifierHeartRateVariabilitySDNN" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28043ad50&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="ms" creationDate="2023-01-15 08:15:30 -0500" startDate="2023-01-15 08:10:00 -0500" endDate="2023-01-15 08:15:00 -0500" value="65"/>
+  <Record type="HKQuantityTypeIdentifierHeartRateVariabilitySDNN" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28043ad50&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="ms" creationDate="2023-01-16 08:20:45 -0500" startDate="2023-01-16 08:15:00 -0500" endDate="2023-01-16 08:20:00 -0500" value="68"/>
+
+  <!-- Walking Speed Records -->
+  <Record type="HKQuantityTypeIdentifierWalkingSpeed" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="mi/hr" creationDate="2023-01-15 09:30:45 -0500" startDate="2023-01-15 09:00:00 -0500" endDate="2023-01-15 09:30:00 -0500" value="3.2"/>
+  <Record type="HKQuantityTypeIdentifierWalkingSpeed" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="mi/hr" creationDate="2023-01-16 10:15:22 -0500" startDate="2023-01-16 09:45:00 -0500" endDate="2023-01-16 10:15:00 -0500" value="3.4"/>
+
+  <!-- Walking Step Length Records -->
+  <Record type="HKQuantityTypeIdentifierWalkingStepLength" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="in" creationDate="2023-01-15 09:30:45 -0500" startDate="2023-01-15 09:00:00 -0500" endDate="2023-01-15 09:30:00 -0500" value="28.5"/>
+  <Record type="HKQuantityTypeIdentifierWalkingStepLength" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="in" creationDate="2023-01-16 10:15:22 -0500" startDate="2023-01-16 09:45:00 -0500" endDate="2023-01-16 10:15:00 -0500" value="29.1"/>
+
+  <!-- Running Speed Records -->
+  <Record type="HKQuantityTypeIdentifierRunningSpeed" sourceName="Polar Flow" sourceVersion="4.12" unit="mi/hr" creationDate="2023-01-17 19:45:33 -0500" startDate="2023-01-17 18:05:00 -0500" endDate="2023-01-17 18:10:00 -0500" value="7.2"/>
+  <Record type="HKQuantityTypeIdentifierRunningSpeed" sourceName="Polar Flow" sourceVersion="4.12" unit="mi/hr" creationDate="2023-01-17 19:45:33 -0500" startDate="2023-01-17 18:10:00 -0500" endDate="2023-01-17 18:15:00 -0500" value="7.5"/>
+  <Record type="HKQuantityTypeIdentifierRunningSpeed" sourceName="Polar Flow" sourceVersion="4.12" unit="mi/hr" creationDate="2023-01-17 19:45:33 -0500" startDate="2023-01-17 18:15:00 -0500" endDate="2023-01-17 18:20:00 -0500" value="7.3"/>
+
+  <!-- Running Power Records -->
+  <Record type="HKQuantityTypeIdentifierRunningPower" sourceName="Polar Flow" sourceVersion="4.12" unit="W" creationDate="2023-01-17 19:45:33 -0500" startDate="2023-01-17 18:05:00 -0500" endDate="2023-01-17 18:10:00 -0500" value="245"/>
+  <Record type="HKQuantityTypeIdentifierRunningPower" sourceName="Polar Flow" sourceVersion="4.12" unit="W" creationDate="2023-01-17 19:45:33 -0500" startDate="2023-01-17 18:10:00 -0500" endDate="2023-01-17 18:15:00 -0500" value="258"/>
+
+  <!-- Running Stride Length Records -->
+  <Record type="HKQuantityTypeIdentifierRunningStrideLength" sourceName="Polar Flow" sourceVersion="4.12" unit="in" creationDate="2023-01-17 19:45:33 -0500" startDate="2023-01-17 18:05:00 -0500" endDate="2023-01-17 18:10:00 -0500" value="52.3"/>
+  <Record type="HKQuantityTypeIdentifierRunningStrideLength" sourceName="Polar Flow" sourceVersion="4.12" unit="in" creationDate="2023-01-17 19:45:33 -0500" startDate="2023-01-17 18:10:00 -0500" endDate="2023-01-17 18:15:00 -0500" value="53.1"/>
+
+  <!-- Running Ground Contact Time Records -->
+  <Record type="HKQuantityTypeIdentifierRunningGroundContactTime" sourceName="Polar Flow" sourceVersion="4.12" unit="ms" creationDate="2023-01-17 19:45:33 -0500" startDate="2023-01-17 18:05:00 -0500" endDate="2023-01-17 18:10:00 -0500" value="245"/>
+  <Record type="HKQuantityTypeIdentifierRunningGroundContactTime" sourceName="Polar Flow" sourceVersion="4.12" unit="ms" creationDate="2023-01-17 19:45:33 -0500" startDate="2023-01-17 18:10:00 -0500" endDate="2023-01-17 18:15:00 -0500" value="242"/>
+
+  <!-- Running Vertical Oscillation Records -->
+  <Record type="HKQuantityTypeIdentifierRunningVerticalOscillation" sourceName="Polar Flow" sourceVersion="4.12" unit="cm" creationDate="2023-01-17 19:45:33 -0500" startDate="2023-01-17 18:05:00 -0500" endDate="2023-01-17 18:10:00 -0500" value="8.2"/>
+  <Record type="HKQuantityTypeIdentifierRunningVerticalOscillation" sourceName="Polar Flow" sourceVersion="4.12" unit="cm" creationDate="2023-01-17 19:45:33 -0500" startDate="2023-01-17 18:10:00 -0500" endDate="2023-01-17 18:15:00 -0500" value="8.5"/>
+
+  <!-- Respiratory Rate Records -->
+  <Record type="HKQuantityTypeIdentifierRespiratoryRate" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28043ad50&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="count/min" creationDate="2023-01-15 08:30:00 -0500" startDate="2023-01-15 02:15:00 -0500" endDate="2023-01-15 02:20:00 -0500" value="15"/>
+  <Record type="HKQuantityTypeIdentifierRespiratoryRate" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28043ad50&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="count/min" creationDate="2023-01-15 08:30:00 -0500" startDate="2023-01-15 03:10:00 -0500" endDate="2023-01-15 03:15:00 -0500" value="14"/>
+
+  <!-- Oxygen Saturation Records -->
+  <Record type="HKQuantityTypeIdentifierOxygenSaturation" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28043ad50&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="%" creationDate="2023-01-15 08:30:00 -0500" startDate="2023-01-15 02:30:00 -0500" endDate="2023-01-15 02:30:00 -0500" value="98"/>
+  <Record type="HKQuantityTypeIdentifierOxygenSaturation" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28043ad50&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="%" creationDate="2023-01-15 08:30:00 -0500" startDate="2023-01-15 04:15:00 -0500" endDate="2023-01-15 04:15:00 -0500" value="97"/>
+
+  <!-- Environmental Audio Exposure Records -->
+  <Record type="HKQuantityTypeIdentifierEnvironmentalAudioExposure" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="dBASPL" creationDate="2023-01-15 12:15:33 -0500" startDate="2023-01-15 12:00:00 -0500" endDate="2023-01-15 12:15:00 -0500" value="72"/>
+  <Record type="HKQuantityTypeIdentifierEnvironmentalAudioExposure" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="dBASPL" creationDate="2023-01-15 14:30:45 -0500" startDate="2023-01-15 14:15:00 -0500" endDate="2023-01-15 14:30:00 -0500" value="68"/>
+
+  <!-- Headphone Audio Exposure Records -->
+  <Record type="HKQuantityTypeIdentifierHeadphoneAudioExposure" sourceName="Rob's iPhone" sourceVersion="16.3" unit="dBASPL" creationDate="2023-01-15 16:45:22 -0500" startDate="2023-01-15 16:30:00 -0500" endDate="2023-01-15 16:45:00 -0500" value="75"/>
+  <Record type="HKQuantityTypeIdentifierHeadphoneAudioExposure" sourceName="Rob's iPhone" sourceVersion="16.3" unit="dBASPL" creationDate="2023-01-15 17:15:33 -0500" startDate="2023-01-15 17:00:00 -0500" endDate="2023-01-15 17:15:00 -0500" value="78"/>
+
+  <!-- Walking Asymmetry Percentage Records -->
+  <Record type="HKQuantityTypeIdentifierWalkingAsymmetryPercentage" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="%" creationDate="2023-01-15 09:30:45 -0500" startDate="2023-01-15 09:00:00 -0500" endDate="2023-01-15 09:30:00 -0500" value="2.3"/>
+  <Record type="HKQuantityTypeIdentifierWalkingAsymmetryPercentage" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="%" creationDate="2023-01-16 10:15:22 -0500" startDate="2023-01-16 09:45:00 -0500" endDate="2023-01-16 10:15:00 -0500" value="2.1"/>
+
+  <!-- Walking Double Support Percentage Records -->
+  <Record type="HKQuantityTypeIdentifierWalkingDoubleSupportPercentage" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="%" creationDate="2023-01-15 09:30:45 -0500" startDate="2023-01-15 09:00:00 -0500" endDate="2023-01-15 09:30:00 -0500" value="28.5"/>
+  <Record type="HKQuantityTypeIdentifierWalkingDoubleSupportPercentage" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="%" creationDate="2023-01-16 10:15:22 -0500" startDate="2023-01-16 09:45:00 -0500" endDate="2023-01-16 10:15:00 -0500" value="27.8"/>
+
+  <!-- Stair Ascent Speed Records -->
+  <Record type="HKQuantityTypeIdentifierStairAscentSpeed" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="ft/s" creationDate="2023-01-15 12:30:45 -0500" startDate="2023-01-15 12:00:00 -0500" endDate="2023-01-15 12:30:00 -0500" value="1.2"/>
+  <Record type="HKQuantityTypeIdentifierStairAscentSpeed" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="ft/s" creationDate="2023-01-16 09:45:33 -0500" startDate="2023-01-16 09:00:00 -0500" endDate="2023-01-16 09:45:00 -0500" value="1.3"/>
+
+  <!-- Stair Descent Speed Records -->
+  <Record type="HKQuantityTypeIdentifierStairDescentSpeed" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="ft/s" creationDate="2023-01-15 12:45:22 -0500" startDate="2023-01-15 12:30:00 -0500" endDate="2023-01-15 12:45:00 -0500" value="1.5"/>
+  <Record type="HKQuantityTypeIdentifierStairDescentSpeed" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="ft/s" creationDate="2023-01-16 10:00:15 -0500" startDate="2023-01-16 09:45:00 -0500" endDate="2023-01-16 10:00:00 -0500" value="1.6"/>
+
+  <!-- Apple Walking Steadiness Records -->
+  <Record type="HKQuantityTypeIdentifierAppleWalkingSteadiness" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="%" creationDate="2023-01-15 23:59:00 -0500" startDate="2023-01-15 00:00:00 -0500" endDate="2023-01-15 23:59:00 -0500" value="85"/>
+  <Record type="HKQuantityTypeIdentifierAppleWalkingSteadiness" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="%" creationDate="2023-01-16 23:59:00 -0500" startDate="2023-01-16 00:00:00 -0500" endDate="2023-01-16 23:59:00 -0500" value="87"/>
+
+  <!-- Walking Heart Rate Average Records -->
+  <Record type="HKQuantityTypeIdentifierWalkingHeartRateAverage" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28043ad50&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="count/min" creationDate="2023-01-15 23:59:00 -0500" startDate="2023-01-15 00:00:00 -0500" endDate="2023-01-15 23:59:00 -0500" value="95"/>
+  <Record type="HKQuantityTypeIdentifierWalkingHeartRateAverage" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28043ad50&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="count/min" creationDate="2023-01-16 23:59:00 -0500" startDate="2023-01-16 00:00:00 -0500" endDate="2023-01-16 23:59:00 -0500" value="93"/>
+
+  <!-- Workout: Running (45 minutes) -->
+  <Workout workoutActivityType="HKWorkoutActivityTypeRunning" duration="45.5" durationUnit="min" sourceName="Strava" sourceVersion="15021" creationDate="2023-01-17 19:50:33 -0500" startDate="2023-01-17 18:00:00 -0500" endDate="2023-01-17 18:45:30 -0500">
+    <MetadataEntry key="HKIndoorWorkout" value="0"/>
+    <MetadataEntry key="HKExternalUUID" value="strava://activities/8456789123"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierActiveEnergyBurned" startDate="2023-01-17 18:00:00 -0500" endDate="2023-01-17 18:45:30 -0500" sum="612" unit="Cal"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierDistanceWalkingRunning" startDate="2023-01-17 18:00:00 -0500" endDate="2023-01-17 18:45:30 -0500" sum="5.23" unit="mi"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierHeartRate" startDate="2023-01-17 18:00:00 -0500" endDate="2023-01-17 18:45:30 -0500" minimum="125" maximum="172" average="155" unit="count/min"/>
+  </Workout>
+
+  <!-- Workout: Running (52 minutes) -->
+  <Workout workoutActivityType="HKWorkoutActivityTypeRunning" duration="52.3" durationUnit="min" sourceName="Polar Flow" sourceVersion="4.12" creationDate="2023-01-20 18:35:45 -0500" startDate="2023-01-20 17:00:00 -0500" endDate="2023-01-20 17:52:18 -0500">
+    <MetadataEntry key="HKIndoorWorkout" value="0"/>
+    <MetadataEntry key="HKExternalUUID" value="polar://workout/987654321"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierActiveEnergyBurned" startDate="2023-01-20 17:00:00 -0500" endDate="2023-01-20 17:52:18 -0500" sum="745" unit="Cal"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierDistanceWalkingRunning" startDate="2023-01-20 17:00:00 -0500" endDate="2023-01-20 17:52:18 -0500" sum="6.12" unit="mi"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierHeartRate" startDate="2023-01-20 17:00:00 -0500" endDate="2023-01-20 17:52:18 -0500" minimum="130" maximum="178" average="160" unit="count/min"/>
+  </Workout>
+
+  <!-- Workout: Walking (30 minutes) -->
+  <Workout workoutActivityType="HKWorkoutActivityTypeWalking" duration="30.0" durationUnit="min" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" creationDate="2023-01-18 11:45:22 -0500" startDate="2023-01-18 11:00:00 -0500" endDate="2023-01-18 11:30:00 -0500">
+    <MetadataEntry key="HKIndoorWorkout" value="0"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierActiveEnergyBurned" startDate="2023-01-18 11:00:00 -0500" endDate="2023-01-18 11:30:00 -0500" sum="145" unit="Cal"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierDistanceWalkingRunning" startDate="2023-01-18 11:00:00 -0500" endDate="2023-01-18 11:30:00 -0500" sum="1.78" unit="mi"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierHeartRate" startDate="2023-01-18 11:00:00 -0500" endDate="2023-01-18 11:30:00 -0500" minimum="85" maximum="105" average="95" unit="count/min"/>
+  </Workout>
+
+  <!-- Workout: Cycling (60 minutes) -->
+  <Workout workoutActivityType="HKWorkoutActivityTypeCycling" duration="60.0" durationUnit="min" sourceName="Strava" sourceVersion="15021" creationDate="2023-01-21 15:15:00 -0500" startDate="2023-01-21 14:00:00 -0500" endDate="2023-01-21 15:00:00 -0500">
+    <MetadataEntry key="HKIndoorWorkout" value="0"/>
+    <MetadataEntry key="HKExternalUUID" value="strava://activities/8462345678"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierActiveEnergyBurned" startDate="2023-01-21 14:00:00 -0500" endDate="2023-01-21 15:00:00 -0500" sum="523" unit="Cal"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierDistanceCycling" startDate="2023-01-21 14:00:00 -0500" endDate="2023-01-21 15:00:00 -0500" sum="15.7" unit="mi"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierHeartRate" startDate="2023-01-21 14:00:00 -0500" endDate="2023-01-21 15:00:00 -0500" minimum="120" maximum="165" average="148" unit="count/min"/>
+  </Workout>
+
+  <!-- Workout: Running (38 minutes) -->
+  <Workout workoutActivityType="HKWorkoutActivityTypeRunning" duration="38.2" durationUnit="min" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" creationDate="2023-01-23 07:50:15 -0500" startDate="2023-01-23 07:00:00 -0500" endDate="2023-01-23 07:38:12 -0500">
+    <MetadataEntry key="HKIndoorWorkout" value="0"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierActiveEnergyBurned" startDate="2023-01-23 07:00:00 -0500" endDate="2023-01-23 07:38:12 -0500" sum="489" unit="Cal"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierDistanceWalkingRunning" startDate="2023-01-23 07:00:00 -0500" endDate="2023-01-23 07:38:12 -0500" sum="4.35" unit="mi"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierHeartRate" startDate="2023-01-23 07:00:00 -0500" endDate="2023-01-23 07:38:12 -0500" minimum="128" maximum="168" average="152" unit="count/min"/>
+  </Workout>
+
+  <!-- Workout: Traditional Strength Training (25 minutes) -->
+  <Workout workoutActivityType="HKWorkoutActivityTypeTraditionalStrengthTraining" duration="25.0" durationUnit="min" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" creationDate="2023-01-24 18:40:00 -0500" startDate="2023-01-24 18:00:00 -0500" endDate="2023-01-24 18:25:00 -0500">
+    <MetadataEntry key="HKIndoorWorkout" value="1"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierActiveEnergyBurned" startDate="2023-01-24 18:00:00 -0500" endDate="2023-01-24 18:25:00 -0500" sum="178" unit="Cal"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierHeartRate" startDate="2023-01-24 18:00:00 -0500" endDate="2023-01-24 18:25:00 -0500" minimum="95" maximum="142" average="118" unit="count/min"/>
+  </Workout>
+
+  <!-- Workout: Hiking (90 minutes) -->
+  <Workout workoutActivityType="HKWorkoutActivityTypeHiking" duration="90.0" durationUnit="min" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" creationDate="2023-01-25 13:45:00 -0500" startDate="2023-01-25 11:00:00 -0500" endDate="2023-01-25 12:30:00 -0500">
+    <MetadataEntry key="HKIndoorWorkout" value="0"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierActiveEnergyBurned" startDate="2023-01-25 11:00:00 -0500" endDate="2023-01-25 12:30:00 -0500" sum="645" unit="Cal"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierDistanceWalkingRunning" startDate="2023-01-25 11:00:00 -0500" endDate="2023-01-25 12:30:00 -0500" sum="4.85" unit="mi"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierHeartRate" startDate="2023-01-25 11:00:00 -0500" endDate="2023-01-25 12:30:00 -0500" minimum="98" maximum="145" average="122" unit="count/min"/>
+  </Workout>
+
+  <!-- Workout: Running (48 minutes) -->
+  <Workout workoutActivityType="HKWorkoutActivityTypeRunning" duration="48.7" durationUnit="min" sourceName="Strava" sourceVersion="15021" creationDate="2023-01-27 18:55:22 -0500" startDate="2023-01-27 17:30:00 -0500" endDate="2023-01-27 18:18:42 -0500">
+    <MetadataEntry key="HKIndoorWorkout" value="0"/>
+    <MetadataEntry key="HKExternalUUID" value="strava://activities/8478901234"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierActiveEnergyBurned" startDate="2023-01-27 17:30:00 -0500" endDate="2023-01-27 18:18:42 -0500" sum="678" unit="Cal"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierDistanceWalkingRunning" startDate="2023-01-27 17:30:00 -0500" endDate="2023-01-27 18:18:42 -0500" sum="5.67" unit="mi"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierHeartRate" startDate="2023-01-27 17:30:00 -0500" endDate="2023-01-27 18:18:42 -0500" minimum="132" maximum="174" average="158" unit="count/min"/>
+  </Workout>
+  
+  <!-- Workout: High Intensity Interval Training (35 minutes) -->
+  <Workout workoutActivityType="HKWorkoutActivityTypeHighIntensityIntervalTraining" duration="35.0" durationUnit="min" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" creationDate="2023-01-28 19:50:00 -0500" startDate="2023-01-28 19:00:00 -0500" endDate="2023-01-28 19:35:00 -0500">
+    <MetadataEntry key="HKIndoorWorkout" value="1"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierActiveEnergyBurned" startDate="2023-01-28 19:00:00 -0500" endDate="2023-01-28 19:35:00 -0500" sum="312" unit="Cal"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierHeartRate" startDate="2023-01-28 19:00:00 -0500" endDate="2023-01-28 19:35:00 -0500" minimum="110" maximum="185" average="162" unit="count/min"/>
+  </Workout>
+  
+  <!-- Workout: Running (55 minutes) -->
+  <Workout workoutActivityType="HKWorkoutActivityTypeRunning" duration="55.3" durationUnit="min" sourceName="Polar Flow" sourceVersion="4.12" creationDate="2023-02-01 18:10:00 -0500" startDate="2023-02-01 17:00:00 -0500" endDate="2023-02-01 17:55:18 -0500">
+    <MetadataEntry key="HKIndoorWorkout" value="0"/>
+    <MetadataEntry key="HKExternalUUID" value="polar://workout/123456789"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierActiveEnergyBurned" startDate="2023-02-01 17:00:00 -0500" endDate="2023-02-01 17:55:18 -0500" sum="798" unit="Cal"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierDistanceWalkingRunning" startDate="2023-02-01 17:00:00 -0500" endDate="2023-02-01 17:55:18 -0500" sum="6.45" unit="mi"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierHeartRate" startDate="2023-02-01 17:00:00 -0500" endDate="2023-02-01 17:55:18 -0500" minimum="135" maximum="180" average="163" unit="count/min"/>
+  </Workout>
+  
+  <!-- Workout: Mixed Metabolic Cardio Training (40 minutes) -->
+  <Workout workoutActivityType="HKWorkoutActivityTypeMixedMetabolicCardioTraining" duration="40.0" durationUnit="min" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" creationDate="2023-02-03 18:55:00 -0500" startDate="2023-02-03 18:00:00 -0500" endDate="2023-02-03 18:40:00 -0500">
+    <MetadataEntry key="HKIndoorWorkout" value="1"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierActiveEnergyBurned" startDate="2023-02-03 18:00:00 -0500" endDate="2023-02-03 18:40:00 -0500" sum="389" unit="Cal"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierHeartRate" startDate="2023-02-03 18:00:00 -0500" endDate="2023-02-03 18:40:00 -0500" minimum="105" maximum="168" average="145" unit="count/min"/>
+  </Workout>
+  
+  <!-- Workout: Running (42 minutes) -->
+  <Workout workoutActivityType="HKWorkoutActivityTypeRunning" duration="42.5" durationUnit="min" sourceName="Strava" sourceVersion="15021" creationDate="2023-02-05 08:50:30 -0500" startDate="2023-02-05 08:00:00 -0500" endDate="2023-02-05 08:42:30 -0500">
+    <MetadataEntry key="HKIndoorWorkout" value="0"/>
+    <MetadataEntry key="HKExternalUUID" value="strava://activities/8489012345"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierActiveEnergyBurned" startDate="2023-02-05 08:00:00 -0500" endDate="2023-02-05 08:42:30 -0500" sum="556" unit="Cal"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierDistanceWalkingRunning" startDate="2023-02-05 08:00:00 -0500" endDate="2023-02-05 08:42:30 -0500" sum="4.92" unit="mi"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierHeartRate" startDate="2023-02-05 08:00:00 -0500" endDate="2023-02-05 08:42:30 -0500" minimum="127" maximum="169" average="153" unit="count/min"/>
+  </Workout>
+  
+  <!-- Workout: Hockey (50 minutes) -->
+  <Workout workoutActivityType="HKWorkoutActivityTypeHockey" duration="50.0" durationUnit="min" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" creationDate="2023-02-07 21:10:00 -0500" startDate="2023-02-07 20:00:00 -0500" endDate="2023-02-07 20:50:00 -0500">
+    <MetadataEntry key="HKIndoorWorkout" value="1"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierActiveEnergyBurned" startDate="2023-02-07 20:00:00 -0500" endDate="2023-02-07 20:50:00 -0500" sum="456" unit="Cal"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierHeartRate" startDate="2023-02-07 20:00:00 -0500" endDate="2023-02-07 20:50:00 -0500" minimum="115" maximum="178" average="155" unit="count/min"/>
+  </Workout>
+  
+  <!-- Workout: Running (58 minutes) -->
+  <Workout workoutActivityType="HKWorkoutActivityTypeRunning" duration="58.2" durationUnit="min" sourceName="Polar Flow" sourceVersion="4.12" creationDate="2023-02-10 18:15:00 -0500" startDate="2023-02-10 17:00:00 -0500" endDate="2023-02-10 17:58:12 -0500">
+    <MetadataEntry key="HKIndoorWorkout" value="0"/>
+    <MetadataEntry key="HKExternalUUID" value="polar://workout/234567890"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierActiveEnergyBurned" startDate="2023-02-10 17:00:00 -0500" endDate="2023-02-10 17:58:12 -0500" sum="823" unit="Cal"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierDistanceWalkingRunning" startDate="2023-02-10 17:00:00 -0500" endDate="2023-02-10 17:58:12 -0500" sum="6.78" unit="mi"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierHeartRate" startDate="2023-02-10 17:00:00 -0500" endDate="2023-02-10 17:58:12 -0500" minimum="138" maximum="182" average="165" unit="count/min"/>
+  </Workout>
+  
+  <!-- Workout: Walking (22 minutes) -->
+  <Workout workoutActivityType="HKWorkoutActivityTypeWalking" duration="22.0" durationUnit="min" sourceName="Rob's iPhone" sourceVersion="16.3" creationDate="2023-02-11 12:35:00 -0500" startDate="2023-02-11 12:00:00 -0500" endDate="2023-02-11 12:22:00 -0500">
+    <MetadataEntry key="HKIndoorWorkout" value="0"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierActiveEnergyBurned" startDate="2023-02-11 12:00:00 -0500" endDate="2023-02-11 12:22:00 -0500" sum="98" unit="Cal"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierDistanceWalkingRunning" startDate="2023-02-11 12:00:00 -0500" endDate="2023-02-11 12:22:00 -0500" sum="1.23" unit="mi"/>
+  </Workout>
+  
+  <!-- Workout: Running (51 minutes) -->
+  <Workout workoutActivityType="HKWorkoutActivityTypeRunning" duration="51.8" durationUnit="min" sourceName="Strava" sourceVersion="15021" creationDate="2023-02-14 18:05:45 -0500" startDate="2023-02-14 17:00:00 -0500" endDate="2023-02-14 17:51:48 -0500">
+    <MetadataEntry key="HKIndoorWorkout" value="0"/>
+    <MetadataEntry key="HKExternalUUID" value="strava://activities/8501234567"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierActiveEnergyBurned" startDate="2023-02-14 17:00:00 -0500" endDate="2023-02-14 17:51:48 -0500" sum="723" unit="Cal"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierDistanceWalkingRunning" startDate="2023-02-14 17:00:00 -0500" endDate="2023-02-14 17:51:48 -0500" sum="6.01" unit="mi"/>
+    <WorkoutStatistics type="HKQuantityTypeIdentifierHeartRate" startDate="2023-02-14 17:00:00 -0500" endDate="2023-02-14 17:51:48 -0500" minimum="133" maximum="176" average="161" unit="count/min"/>
+  </Workout>
+  
+  <!-- Additional Step Count Records for variety -->
+  <Record type="HKQuantityTypeIdentifierStepCount" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x280768050&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="count" creationDate="2023-02-01 14:30:00 -0500" startDate="2023-02-01 14:00:00 -0500" endDate="2023-02-01 14:30:00 -0500" value="445"/>
+  <Record type="HKQuantityTypeIdentifierStepCount" sourceName="Rob's iPhone" sourceVersion="16.3" unit="count" creationDate="2023-02-02 10:45:00 -0500" startDate="2023-02-02 10:15:00 -0500" endDate="2023-02-02 10:45:00 -0500" value="378"/>
+  <Record type="HKQuantityTypeIdentifierStepCount" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x280768050&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="count" creationDate="2023-02-03 09:15:00 -0500" startDate="2023-02-03 08:45:00 -0500" endDate="2023-02-03 09:15:00 -0500" value="523"/>
+  <Record type="HKQuantityTypeIdentifierStepCount" sourceName="Polar Flow" sourceVersion="4.12" unit="count" creationDate="2023-02-05 08:50:00 -0500" startDate="2023-02-05 08:00:00 -0500" endDate="2023-02-05 08:45:00 -0500" value="4567"/>
+  
+  <!-- Additional Heart Rate Records -->
+  <Record type="HKQuantityTypeIdentifierHeartRate" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28043ad50&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="count/min" creationDate="2023-02-01 10:30:00 -0500" startDate="2023-02-01 10:25:00 -0500" endDate="2023-02-01 10:25:00 -0500" value="64"/>
+  <Record type="HKQuantityTypeIdentifierHeartRate" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28043ad50&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="count/min" creationDate="2023-02-02 11:15:00 -0500" startDate="2023-02-02 11:10:00 -0500" endDate="2023-02-02 11:10:00 -0500" value="62"/>
+  <Record type="HKQuantityTypeIdentifierHeartRate" sourceName="Polar Flow" sourceVersion="4.12" unit="count/min" creationDate="2023-02-05 08:20:00 -0500" startDate="2023-02-05 08:15:00 -0500" endDate="2023-02-05 08:15:00 -0500" value="148"/>
+  <Record type="HKQuantityTypeIdentifierHeartRate" sourceName="Polar Flow" sourceVersion="4.12" unit="count/min" creationDate="2023-02-05 08:35:00 -0500" startDate="2023-02-05 08:30:00 -0500" endDate="2023-02-05 08:30:00 -0500" value="156"/>
+  
+  <!-- Additional Energy Records -->
+  <Record type="HKQuantityTypeIdentifierActiveEnergyBurned" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="Cal" creationDate="2023-02-01 15:00:00 -0500" startDate="2023-02-01 14:30:00 -0500" endDate="2023-02-01 15:00:00 -0500" value="67.5"/>
+  <Record type="HKQuantityTypeIdentifierActiveEnergyBurned" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="Cal" creationDate="2023-02-02 11:00:00 -0500" startDate="2023-02-02 10:30:00 -0500" endDate="2023-02-02 11:00:00 -0500" value="54.3"/>
+  <Record type="HKQuantityTypeIdentifierBasalEnergyBurned" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="Cal" creationDate="2023-02-01 10:00:00 -0500" startDate="2023-02-01 09:57:00 -0500" endDate="2023-02-01 10:00:00 -0500" value="2.15"/>
+  <Record type="HKQuantityTypeIdentifierBasalEnergyBurned" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="Cal" creationDate="2023-02-02 09:30:00 -0500" startDate="2023-02-02 09:27:00 -0500" endDate="2023-02-02 09:30:00 -0500" value="2.12"/>
+  
+  <!-- Additional Distance Records -->
+  <Record type="HKQuantityTypeIdentifierDistanceWalkingRunning" sourceName="Rob’s Apple Watch" sourceVersion="9.3" device="&lt;&lt;HKDevice: 0x28076f8e0&gt;, name:Apple Watch, manufacturer:Apple Inc., model:Watch, hardware:Watch6,7, software:9.3>" unit="mi" creationDate="2023-02-01 15:00:00 -0500" startDate="2023-02-01 14:30:00 -0500" endDate="2023-02-01 15:00:00 -0500" value="0.52"/>
+  <Record type="HKQuantityTypeIdentifierDistanceWalkingRunning" sourceName="Rob's iPhone" sourceVersion="16.3" unit="mi" creationDate="2023-02-02 11:00:00 -0500" startDate="2023-02-02 10:30:00 -0500" endDate="2023-02-02 11:00:00 -0500" value="0.41"/>
+  <Record type="HKQuantityTypeIdentifierDistanceWalkingRunning" sourceName="Polar Flow" sourceVersion="4.12" unit="mi" creationDate="2023-02-05 08:50:00 -0500" startDate="2023-02-05 08:00:00 -0500" endDate="2023-02-05 08:45:00 -0500" value="4.92"/>
+  
+  <!-- Additional Body Measurements -->
+  <Record type="HKQuantityTypeIdentifierBodyMass" sourceName="Sync Solver" sourceVersion="30" unit="lb" creationDate="2023-02-01 07:25:00 -0500" startDate="2023-02-01 07:00:00 -0500" endDate="2023-02-01 07:25:00 -0500" value="174.6"/>
+  <Record type="HKQuantityTypeIdentifierBodyMass" sourceName="Sync Solver" sourceVersion="30" unit="lb" creationDate="2023-02-08 07:18:00 -0500" startDate="2023-02-08 07:00:00 -0500" endDate="2023-02-08 07:18:00 -0500" value="174.3"/>
+  <Record type="HKQuantityTypeIdentifierBodyMassIndex" sourceName="Sync Solver" unit="count" creationDate="2023-02-01 07:25:00 -0500" startDate="2023-02-01 07:00:00 -0500" endDate="2023-02-01 07:25:00 -0500" value="23.72"/>
+  <Record type="HKQuantityTypeIdentifierBodyMassIndex" sourceName="Sync Solver" unit="count" creationDate="2023-02-08 07:18:00 -0500" startDate="2023-02-08 07:00:00 -0500" endDate="2023-02-08 07:18:00 -0500" value="23.68"/>
+  
+</HealthData>

@@ -1,8 +1,8 @@
-import asyncio
+import random
+import string
+import os
 
 from celery import Celery
-from fastapi import BackgroundTasks
-import boto3
 
 from app.client import s3_client
 from app.ducky.duckdb_importer import ParquetImporter
@@ -16,42 +16,43 @@ celery_app = Celery(
     include=['app.processor', 'app.main']
 )
 
-importer = ParquetImporter()
+
 
 @celery_app.task
 def process_uploaded_file(bucket_name: str, object_key: str):
     """
     Process file uploaded to S3
     """
-    # Download file from S3
+
+
     response = s3_client.get_object(Bucket=bucket_name, Key=object_key)
     file_content = response['Body']
 
-    # Process the file (example: get file info)
+    importer = ParquetImporter()
 
-    counter = 1
-    chunk_size = 1024*1024
-    chunk = file_content.read(chunk_size)
-    while chunk:
-        print(f"chunk {counter}")
-        print(chunk[:10])
-        counter += 1
-        chunk = file_content.read(chunk_size)
+    try:
+        length = 8
+        db_file = ''.join(random.choices(string.ascii_letters + string.digits, k=length))
 
-    # Your processing logic here
-    # - Image processing
-    # - Text extraction
-    # - Data analysis
-    # - etc.
-    print("RECeived file!!!!11")
+        importer.xml_path = file_content
+        importer.path = db_file
+        importer.export_xml()
+    except:
+        os.remove(db_file)
 
 
+    uid = object_key.split('/')[0]
+    filename = object_key.split('/')[-1]
+    full_name = uid + '/processed/' + filename.replace('.xml', '.duckdb')
 
+    s3_client.upload_file(db_file, bucket_name, full_name)
 
-    # Optionally save results back to S3 or database
+    os.remove(db_file)
+
     result = {
         "bucket": bucket_name,
         "key": object_key,
+        "new_filename": full_name,
         "status": "processed"
     }
 
