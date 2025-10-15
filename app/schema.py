@@ -46,3 +46,12 @@ class PresignedURLResponse(BaseModel):
     max_file_size: int
     content_type: str
     bucket: str
+
+class S3Event(BaseModel):
+    bucket_name: str
+    object_key: str
+    event_name: str
+
+class SQSMessage(BaseModel):
+    Message: str
+    MessageId: str

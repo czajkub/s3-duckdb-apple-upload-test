@@ -1,22 +1,30 @@
 from datetime import datetime, UTC
-import uuid
+import json
+from typing import Optional
 
-from app.client import s3_client
+import boto3
+from botocore.exceptions import ClientError
+from fastapi import FastAPI, HTTPException, Request
 
+from app.client import s3_client, AWS_BUCKET_NAME, AWS_REGION
+from app.schema import PresignedURLRequest, PresignedURLResponse, SQSMessage, S3Event
+from app.processor import celery_app, process_uploaded_file
+
+
+QUEUE_URL: str = "https://sqs.eu-north-1.amazonaws.com/733796381340/xml_upload"
 
 def generate_file_key(
-    user_id: str, data_category: str, filename: Optional[str] = None
+    user_id: str, filename: Optional[str] = None
 ) -> str:
     """Generate a unique file key for S3 storage"""
     timestamp = datetime.now(UTC)
-    unique_id = uuid.uuid4().hex[:8]
 
     if filename:
         # Clean filename and preserve extension
         clean_filename = "".join(c for c in filename if c.isalnum() or c in ".-_")
-        file_key = f"{data_category}/{user_id}/{timestamp}_{unique_id}_{clean_filename}"
+        file_key = f"{user_id}/raw/{clean_filename}"
     else:
-        file_key = f"{data_category}/{user_id}/{timestamp}_{unique_id}.json"
+        file_key = f"{user_id}/raw/{timestamp}.xml"
 
     return file_key
 
@@ -39,6 +47,7 @@ def validate_bucket_exists() -> bool:
 
 
 app = FastAPI()
+sqs = boto3.client("sqs")
 
 
 @app.post("/upload/presigned-url", response_model=PresignedURLResponse)
@@ -56,7 +65,6 @@ async def create_presigned_upload_url(request: PresignedURLRequest):
     # Generate unique file key
     file_key = generate_file_key(
         user_id=request.user_id,
-        data_category=request.data_category.value,
         filename=request.filename,
     )
 
@@ -132,3 +140,57 @@ async def confirm_upload(file_key: str, user_id: str):
             raise HTTPException(status_code=404, detail="File not found in S3")
         else:
             raise HTTPException(status_code=500, detail=f"S3 error: {error_code}")
+@app.get("/poll-sqs")
+async def poll_sqs_messages():
+    """
+    Poll SQS for messages (alternative to webhook)
+    """
+    try:
+        # Receive messages from SQS
+        response = sqs.receive_message(
+            QueueUrl=QUEUE_URL,
+            MaxNumberOfMessages=10,
+            WaitTimeSeconds=20,  # Long polling
+            MessageAttributeNames=['All']
+        )
+
+        waiter = sqs.get_waiter("stefan")
+        res = await waiter.wait(QueueUrl=QUEUE_URL)
+
+        messages = response.get('Messages', [])
+        processed_count = 0
+
+        for message in messages:
+            try:
+                # Parse message body
+                message_body = json.loads(message['Body'])
+
+                # Handle S3 notification
+                if 'Records' in message_body:
+                    for record in message_body['Records']:
+                        if record.get('eventSource') == 'aws:s3':
+                            bucket_name = record['s3']['bucket']['name']
+                            object_key = record['s3']['object']['key']
+
+                            # Enqueue Celery task
+                            task = process_uploaded_file.delay(bucket_name, object_key)
+                            print(task)
+                            processed_count += 1
+
+                # Delete message from queue after processing
+                sqs.delete_message(
+                    QueueUrl=QUEUE_URL,
+                    ReceiptHandle=message['ReceiptHandle']
+                )
+
+            except Exception as e:
+                raise
+
+        return {
+            "messages_processed": processed_count,
+            "total_messages": len(messages),
+            "messages": messages
+        }
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
